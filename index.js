@@ -1,5 +1,5 @@
 // Use Component
-import vueHttpFast from './http-fast.vue';
+import http from './http.vue';
 
 // Preset for Options
 const preset = {
@@ -15,6 +15,6 @@ export default {
     App.config.globalProperties.vueHttpFastLaunch = launch;
 
     // Component Register
-    App.component(name, vueHttpFast);
+    App.component(name, http);
   },
 };

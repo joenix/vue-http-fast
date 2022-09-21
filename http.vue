@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'vue-http-fast',
+  name: 'http',
 
   data() {
     return {
@@ -102,10 +102,10 @@ export default {
       }
 
       // Get Data
-      const { data } = await this.requestInterceptor(this.params);
+      const { data, headers } = await this.requestInterceptor(this.params);
 
       // Send Request
-      const response = await this.launch(this.api, this.method, data);
+      const response = await this.launch(this.api, this.method, data, headers);
 
       // Sync Template
       this.response = await this.responseInterceptor(response);

@@ -14,25 +14,43 @@ npm i vue-http-fast
 import vueHttpFast from 'vue-http-fast';
 
 // in Vue 2
-Vue.use(vueHttpFast);
+Vue.use(vueHttpFast, { ...options });
 
 // in Vue 3
-App.use(vueHttpFast);
+App.use(vueHttpFast, { ...options });
+
+// Option Example
+options = {
+  async launch(api, method, data) {
+    return axios({
+      method: 'get',
+      url: api,
+      data,
+    });
+  },
+};
 ```
 
 ## How to use
 
-```vue
-<http-fast url="">
-    ... some html
-</http-fast>
+```html
+<http api="..." :params="{ hello: 'world' }" v-slot="{ data }">
+  <div>{{ data }}</div>
+</http>
 ```
+
+## Tip
+
+`vue-http-fast` do not have the ability to send requests, you need to configure the request class during registration
 
 ## Docs
 
-### Params
-
-| Name   | Type   | Description          |
-| ------ | ------ | -------------------- |
-| url    | String | url for http request |
-| method | String | sss                  |
+| Name                | Type    | Description                     |
+| ------------------- | ------- | ------------------------------- |
+| api                 | String  | address for request             |
+| method              | String  | be used when making the request |
+| params              | Object  | be sent with the request        |
+| wait                | Boolean | set rending after response      |
+| http                | Promise | reset tool of sending requests  |
+| requestInterceptor  | Promise | interceptor before request      |
+| responseInterceptor | Promise | interceptor after response      |
