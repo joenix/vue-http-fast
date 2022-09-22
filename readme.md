@@ -34,9 +34,15 @@ options = {
 ## How to use
 
 ```html
-<http api="..." :params="{ hello: 'world' }" v-slot="{ data }">
+<http api="..." :params="{ hello: 'world' }" v-slot="{ data }" ref="http">
   <div>{{ data }}</div>
 </http>
+```
+
+## How to Refresh
+
+```js
+this.$refs.http.refresh(params, headers);
 ```
 
 ## Tip
@@ -45,12 +51,12 @@ options = {
 
 ## Docs
 
-| Name                | Type    | Description                     |
-| ------------------- | ------- | ------------------------------- |
-| api                 | String  | address for request             |
-| method              | String  | be used when making the request |
-| params              | Object  | be sent with the request        |
-| wait                | Boolean | set rending after response      |
-| http                | Promise | reset tool of sending requests  |
-| requestInterceptor  | Promise | interceptor before request      |
-| responseInterceptor | Promise | interceptor after response      |
+| Name                | Type    | Default                                | Description                     |
+| ------------------- | ------- | -------------------------------------- | ------------------------------- |
+| api                 | String  | ''                                     | address for request             |
+| method              | String  | get                                    | be used when making the request |
+| params              | Object  | {}                                     | be sent with the request        |
+| wait                | Boolean | true                                   | set rending after response      |
+| http                | Promise | none                                   | reset tool of sending requests  |
+| requestInterceptor  | Promise | (data, headers) => ({ data, headers }) | interceptor before request      |
+| responseInterceptor | Promise | result => result                       | interceptor after response      |

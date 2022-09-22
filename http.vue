@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <slot :data="response" v-if="visual" />
-  </div>
+  <slot :data="response" v-if="visual" />
 </template>
 
 <script>
@@ -95,20 +93,28 @@ export default {
     },
 
     // Sender
-    async send() {
+    async send(params, header) {
       // No Props
       if (!this.api) {
         return;
       }
 
       // Get Data
-      const { data, headers } = await this.requestInterceptor(this.params);
+      const { data, headers } = await this.requestInterceptor(params || this.params);
 
       // Send Request
-      const response = await this.launch(this.api, this.method, data, headers);
+      const response = await this.launch(this.api, this.method, data, header || headers);
 
       // Sync Template
       this.response = await this.responseInterceptor(response);
+
+      // Export
+      return this.response;
+    },
+
+    // Refresh
+    async refresh(params, header) {
+      return await this.send(params, header);
     },
   },
 
