@@ -8,7 +8,7 @@
     "vue-http",
     "vue-request",
     "vue-axios",
-    "http-fast"
+    "http-fast",
     "ajax"
   ],
   "author": "Joenix",
