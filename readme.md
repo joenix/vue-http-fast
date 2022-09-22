@@ -34,15 +34,34 @@ options = {
 ## How to use
 
 ```html
-<http api="..." :params="{ hello: 'world' }" v-slot="{ data }" ref="http">
+<http api="..." method="get" :params="{ hello: 'world' }" v-slot="{ data }">
   <div>{{ data }}</div>
 </http>
 ```
 
-## How to Refresh
+## How to Secondary Request
 
 ```js
+// Refresh according to the method set on the component
 this.$refs.http.refresh(params, headers);
+
+// Send request as method get
+this.$refs.http.get(params, headers);
+
+// Send request as method post
+this.$refs.http.get(params, headers);
+```
+
+## Or it can be written in template like
+
+```html
+<http api="..." ref="http">
+  <div>{{ data }}</div>
+
+  <button @click="$refs.http.refresh">refresh</button>
+  <button @click="$refs.http.get({ respect: false })">get</button>
+  <button @click="$refs.http.post({ respect: true })">post</button>
+</http>
 ```
 
 ## Tip

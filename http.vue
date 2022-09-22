@@ -93,7 +93,7 @@ export default {
     },
 
     // Sender
-    async send(params, header) {
+    async send(params, method, header) {
       // No Props
       if (!this.api) {
         return;
@@ -103,7 +103,7 @@ export default {
       const { data, headers } = await this.requestInterceptor(params || this.params);
 
       // Send Request
-      const response = await this.launch(this.api, this.method, data, header || headers);
+      const response = await this.launch(this.api, method || this.method, data, header || headers);
 
       // Sync Template
       this.response = await this.responseInterceptor(response);
@@ -112,9 +112,19 @@ export default {
       return this.response;
     },
 
+    // Quick Get
+    async get(params, header) {
+      return await this.send(params, 'get', header);
+    },
+
+    // Quick Post
+    async get(params, header) {
+      return await this.send(params, 'post', header);
+    },
+
     // Refresh
     async refresh(params, header) {
-      return await this.send(params, header);
+      return await this.send(params, null, header);
     },
   },
 
