@@ -3,6 +3,14 @@
   "version": "2.1.3",
   "main": "index.js",
   "repository": "https://github.com/joenix/vue-http-fast.git",
+  "keywords": [
+    "vue",
+    "vue-http",
+    "vue-request",
+    "vue-axios",
+    "http-fast"
+    "ajax"
+  ],
   "author": "Joenix",
   "license": "MIT"
 }
