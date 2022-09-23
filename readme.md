@@ -71,12 +71,13 @@ this.$refs.http.get(params, headers);
 
 ## Docs
 
-| Name                | Type    | Default                                | Description                     |
-| ------------------- | ------- | -------------------------------------- | ------------------------------- |
-| api                 | String  | ''                                     | address for request             |
-| method              | String  | get                                    | be used when making the request |
-| params              | Object  | {}                                     | be sent with the request        |
-| wait                | Boolean | true                                   | set rending after response      |
-| http                | Promise | none                                   | reset tool of sending requests  |
-| requestInterceptor  | Promise | (data, headers) => ({ data, headers }) | interceptor before request      |
-| responseInterceptor | Promise | result => result                       | interceptor after response      |
+| Name                | Type    | Default                                | Description                       |
+| ------------------- | ------- | -------------------------------------- | --------------------------------- |
+| api                 | String  | ''                                     | address for request               |
+| method              | String  | get                                    | be used when making the request   |
+| params              | Object  | {}                                     | be sent with the request          |
+| immediate           | Boolean | true                                   | set request be sended immediately |
+| wait                | Boolean | true                                   | set rending after response        |
+| http                | Promise | none                                   | reset tool of sending requests    |
+| requestInterceptor  | Promise | (data, headers) => ({ data, headers }) | interceptor before request        |
+| responseInterceptor | Promise | result => result                       | interceptor after response        |
