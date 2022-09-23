@@ -31,6 +31,12 @@ export default {
       default: {},
     },
 
+    // Immediate
+    immediate: {
+      type: [Boolean],
+      default: true,
+    },
+
     // Wait for Rending
     wait: {
       type: [Boolean],
@@ -131,7 +137,9 @@ export default {
   },
 
   async mounted() {
-    await this.send();
+    if (this.immediate) {
+      await this.send();
+    }
   },
 };
 </script>
