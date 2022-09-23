@@ -118,7 +118,7 @@ export default {
     },
 
     // Quick Post
-    async get(params, header) {
+    async post(params, header) {
       return await this.send(params, 'post', header);
     },
 
