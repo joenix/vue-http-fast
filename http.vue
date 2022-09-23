@@ -80,8 +80,8 @@ export default {
 
   methods: {
     // Built-In Launch
-    async inLaunch(api, method, data) {
-      return this.$http(api)[method](data);
+    async inLaunch(api, method, data, headers = { 'Content-Type': 'application/json' }) {
+      return await this.$http(api)[method](data, { headers });
     },
 
     // Empty
@@ -101,7 +101,8 @@ export default {
 
       // Get Data
       const { data, headers } = await this.requestInterceptor(params || this.params);
-
+      // console.log(1, 'in send, method:', this.method, method);
+      // console.log(2, 'in send, data:', data, params);
       // Send Request
       const response = await this.launch(this.api, method || this.method, data, header || headers);
 
@@ -119,6 +120,7 @@ export default {
 
     // Quick Post
     async post(params, header) {
+      console.log(100, params, 200, header);
       return await this.send(params, 'post', header);
     },
 

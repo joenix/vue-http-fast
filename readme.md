@@ -21,11 +21,12 @@ App.use(vueHttpFast, { ...options });
 
 // Option Example
 options = {
-  async launch(api, method, data) {
+  async launch(api, method, data, headers) {
     return axios({
       method: 'get',
       url: api,
       data,
+      headers,
     });
   },
 };
